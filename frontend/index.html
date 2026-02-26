@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Suraksha AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+
+    <header>
+        <h2>🛡 Suraksha AI</h2>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#how">How It Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Intelligent Safety Companion</h1>
+            <p>AI-powered personal security platform with smart escalation system.</p>
+            <button onclick="scrollToSection()">Explore Features</button>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="features">
+        <h2>Core Features</h2>
+
+        <div class="feature-card">
+            <h3>🚨 Smart SOS</h3>
+            <p>Instant emergency alert with live location tracking.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🧠 AI Threat Detection</h3>
+            <p>Analyzes user input and detects danger level automatically.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>⚡ Agentic Escalation</h3>
+            <p>Multi-level intelligent response system for emergencies.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3> 💲 Subscription </h3>
+            <p>Activate premium protection today</p>
+        </div>
+        <div class="feature-card">
+            <h3> ☎️ Add Emergency Contact</h3>
+<input type="email" id="userEmail" placeholder="Your Email"><br>
+<input type="email" id="contactEmail" placeholder="Emergency Contact Email" required><br>
+<button onclick="saveContact()" style="color: white ; background: rgb(91, 11, 11);">Save Contact </button>
+<p id="contactMessage"></p>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="how">
+        <h2>How Suraksha AI Works</h2>
+        <p>Step 1: User triggers alert or AI detects danger.</p>
+        <p>Step 2: System evaluates threat level.</p>
+        <p>Step 3: Escalation engine activates emergency response.</p>
+    </section>
+
+    <!-- PREVIEW SOS -->
+    <section class="preview">
+        <h2>Emergency Mode Preview</h2>
+        <button class="sos-btn" onclick="fakeSOS()">🚨 Activate Demo SOS</button>
+        <div id="map" style="height: 400px; margin-top: 30px; border-radius: 15px;"></div>
+        <p id="sosMessage"></p>
+        <button onclick="cancelSOS()" style="margin-top:15px;"></button>
+    </section>
+    
+<body>
+    
+
+    <p id="status"></p>
+
+    <script>
+        const form = document.getElementById("emailForm");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("email").value;
+
+            const response = await fetch("/send-email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            });
+
+            const result = await response.json();
+            document.getElementById("status").innerText = result.message;
+        });
+    </script>
+</body>
+
+    <footer id="contact">
+        <p>© 2026 Suraksha AI | Built for Hack India</p>
+    </footer>
+
+<script src="script.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</body>
+
+</html>
